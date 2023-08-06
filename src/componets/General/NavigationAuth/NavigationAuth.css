@@ -1,0 +1,56 @@
+.navauth {
+    margin-top: -3px;
+     margin-right: 1px;
+  }
+  
+  .navauth__block {
+    display: flex;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .navauth__link  {
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    transition: opacity .2s linear;
+    text-align: center;
+    font-family: "Inter", Arial, sans-serif;
+      font-weight: 400;
+    
+ }
+  
+  .navauth__link:hover {
+    opacity: .6;
+    cursor: pointer;
+  }
+  
+  .navauth__link-signup {
+    color: #FFFFFF;
+  }
+  
+  .navauth__link-signin {
+    color: #000000;
+    background-color: #2be080;
+    margin-left: 30px;
+    padding-top: 8px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    border-radius: 3px;
+  }
+  
+  @media screen and (max-width: 540px) {
+    .navauth__link  {
+      font-size: 10px;
+    }
+  
+    .navauth__link-signin {
+      margin-left: 14px;
+      padding-top: 5px;
+      padding-right: 12px;
+      padding-bottom: 5px;
+      padding-left: 12px;
+    }
+  }

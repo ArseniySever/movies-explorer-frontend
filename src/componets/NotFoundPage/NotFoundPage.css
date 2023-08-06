@@ -1,0 +1,102 @@
+.notfoundpage {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas:
+      '.'
+      'title'
+      'subtitle'
+      'link';
+    justify-items: center;
+    height: 100vh;
+  }
+
+  .notfoundpage__title {
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-size: 140px;
+    line-height: 169px;
+    color: #FFFFFF;
+    grid-area: title;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    padding-top: 246px;
+    padding-bottom: 5px;
+  }
+  
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .notfoundpage__title {
+      font-size: 140px;
+      padding-top: 408px;
+      padding-bottom: 10px;
+    }
+  }
+  
+  .notfoundpage__subtitle {
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 19px;
+    grid-area: subtitle;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+  }
+  
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .notfoundpage__subtitle {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  
+  .notfoundpage__link {
+    text-decoration: none;
+    color: #4285F4;
+    text-align: center;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+    grid-area: link;
+    align-self: end;
+    transition: opacity 0.3;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    padding-top: 184px;
+    padding-bottom: 60px;
+  }
+  
+  .notfoundpage__link:hover {
+    opacity: 0.7;
+  }
+  
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .notfoundpage__link {
+      font-size: 14px;
+      line-height: 14px;
+      padding-top: 184px;
+      padding-bottom: 222px;
+
+
+    }
+  }
+  @media screen and  (max-width: 767px) {
+    .notfoundpage__link {
+      padding-top: 284px;
+      padding-bottom: 30px;
+      line-height: 15px;
+
+    }
+    .notfoundpage__title {
+      font-size: 80px;
+      line-height: 97px;
+      padding-bottom: 10px;
+      padding-top: 329px;
+
+    }
+    .notfoundpage__subtitle {
+      line-height: 15px;
+     
+    }
+  }
