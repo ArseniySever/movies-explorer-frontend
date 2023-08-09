@@ -8,7 +8,7 @@ function AboutMe() {
       Студент
       </h1>
         <section className='aboutme__block'>
-            <section className='aboutme__block_info'>
+            <section className='aboutme__block-info'>
                 <h2 className='aboutme__subtitle'>
                     Арсений
                 </h2>
@@ -19,8 +19,8 @@ function AboutMe() {
                 Я родился и живу в Ленинградской области, закончил педагогический институт  НовГУ. У меня нет жены 
 и дочери. Я люблю слушать музыку, а ещё увлекаюсь играми. Недавно начал кодить. С 2017 года обучался в институте. После того, как пройду курс по веб-разработке, буду думать о постоянной работы.
                 </h2>
-                <a href="https://github.com/ArseniySever" className='aboutme__git'>
-                    <p className='aboutme__git_title'>GitHub</p>
+                <a href="https://github.com/ArseniySever" className='aboutme__git' target="_blank" rel="noreferrer">
+                    <p className='aboutme__git-title'>GitHub</p>
                 </a>
             </section>
             <img
@@ -30,24 +30,24 @@ function AboutMe() {
             />
         </section>
         <section className='aboutme__portfolio'>
-            <h2 className='aboutme__portfolio_name'>
+            <h2 className='aboutme__portfolio-name'>
                 Портфолио
             </h2>
-            <ul className='aboutme__portfolio_block'>
-                <li className='aboutme__portfolio_tab'>
-                    <a href='https://github.com/ArseniySever/how-to-learn' className='aboutme__portfolio_link'>
+            <ul className='aboutme__portfolio-block'>
+                <li className='aboutme__portfolio-tab'>
+                    <a href='https://github.com/ArseniySever/how-to-learn' className='aboutme__portfolio-link' target="_blank" rel="noreferrer" >
                         <p className='aboutme__portfolio_title'>Статичный сайт</p>
                         <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
                     </a>
                 </li>
-                <li className='aboutme__portfolio_tab'>
-                    <a href='https://github.com/ArseniySever/russian-travel' className='aboutme__portfolio_link'>
+                <li className='aboutme__portfolio-tab'>
+                    <a href='https://github.com/ArseniySever/russian-travel' className='aboutme__portfolio-link' target="_blank" rel="noreferrer" >
                         <p className='aboutme__portfolio_title'>Адаптивный сайт</p>
                         <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
                     </a>
                 </li>
-                <li className='aboutme__portfolio_tab'>
-                    <a href='https://github.com/ArseniySever/mesto-react' className='aboutme__portfolio_link'>
+                <li className='aboutme__portfolio-tab '>
+                    <a href='https://github.com/ArseniySever/mesto-react' className='aboutme__portfolio-link aboutme__portfolio-link_last' target="_blank" rel="noreferrer" >
                         <p className='aboutme__portfolio_title'>Одностраничное приложение</p>
                         <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
                     </a>

@@ -10,7 +10,7 @@
     height: 43px;
     outline: none;
     border: none;
-    background: transparent url('../../../images/bar.png') center center / cover no-repeat;
+    background: transparent url('../../../images/bar.svg') center center / cover no-repeat;
     transition: opacity .2s linear;
   }
   
@@ -40,7 +40,7 @@
     height: 22px;
     outline: none;
     border: none;
-    background: transparent url('../../../images/close.png') center center / 32px no-repeat;
+    background: transparent url('../../../images/close.svg') center center / 32px no-repeat;
     align-self: flex-end;
     transition: opacity .2s linear;
   }

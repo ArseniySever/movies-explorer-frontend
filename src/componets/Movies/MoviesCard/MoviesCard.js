@@ -1,8 +1,7 @@
 import React from "react";
-import close from "../../../images/close.png";
+import close from "../../../images/close.svg";
 import {useState} from "react";
-import check from "../../../images/check.png";
-
+import check from "../../../images/check.svg";
 import "../MoviesCard/MoviesCard.css";
 import { useLocation } from "react-router-dom";
 

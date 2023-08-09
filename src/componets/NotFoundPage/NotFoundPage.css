@@ -7,7 +7,7 @@
       'subtitle'
       'link';
     justify-items: center;
-    height: 100vh;
+
   }
 
   .notfoundpage__title {
@@ -37,17 +37,17 @@
     text-align: center;
     font-style: normal;
     color: #FFFFFF;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 19px;
     grid-area: subtitle;
     font-family: "Inter", Arial, sans-serif;
     font-weight: 400;
   }
   
-  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+  @media screen and  (max-width: 767px) {
     .notfoundpage__subtitle {
-      font-size: 16px;
-      line-height: 19px;
+      font-size: 12px;
+      line-height: 15px;
     }
   }
   

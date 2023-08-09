@@ -1,6 +1,6 @@
 .auth-section {
-    width: 35%;
-    height: 100vh;
+    max-width: 396px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,6 +13,7 @@
     align-self: flex-start;
     cursor: pointer;
     transition: opacity .2s linear;
+    padding-top: 70px;
 
 }
   .auth-section__header:hover {
@@ -26,8 +27,8 @@
 .auth-section__title {
     margin: 0;
     color: #FFFFFF;
-    font-size: 1.5rem;
-    line-height: 12px;
+    font-size: 24px;
+    line-height: 29px;
     margin-bottom: 20px;
     font-family: "Inter", Arial, sans-serif;
     font-weight: 500;
@@ -44,10 +45,10 @@
 
 .auth-section__text {
     color: #8B8B8B;
-    margin: 15px 0 0;
+    margin: 16px 0 0;
     text-align: center;
-    font-size: .9rem;
-    line-height: 1rem;
+    font-size: 14px;
+    line-height: 17px;
     font-weight: normal;
     font-family: "Inter", Arial, sans-serif;
     font-weight: 400;
@@ -70,13 +71,19 @@
     color: #FFFFFF;
     font-family: "Inter", Arial, sans-serif;
     border: 0;
+    padding: 0;
     font-size: 13px;
-    line-height: 1rem;
+    line-height: 16px;
     font-weight: 500;
     border-radius: 8px;
     min-height: 46px;
     padding-left: 15px;
 }
+.auth-section__input::placeholder {
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+}
+
 .auth-section__input:invalid {
  color: #EE3465;
 }
@@ -96,14 +103,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 66px;
     
 }
 .auth-section__button {
     margin-top: 179px;
     height: 50px;
     background-color: #4285F4;
-    font-size: 1rem;
-    line-height: 1.4rem;
+    font-size: 14px;
+    line-height: 17px;
     text-align: center;
     font-weight: normal;
     color: #FFFFFF;
@@ -113,16 +121,27 @@
     font-weight: 500;
     cursor: pointer;
     transition: opacity .2s linear;
+    padding: 0;
+    max-height: 45px;
 
 }
   .auth-section__button:hover {
     opacity: .6;
   }
+  .auth-section__button_reg {
+  margin-top: 91px;
+    }
 @media screen and (min-width: 768px) and  (max-width: 1279px) {
     .auth-section{
-        width: 51.5%;
-    
+        max-width: 396px;
     }
+    .auth-section__header{
+
+    padding-top:232px;
+}
+.auth-section__form {
+    padding-bottom: 232px;
+}
     .auth-section__button {
         margin-top: 179px;
         height: 45px;
@@ -142,7 +161,8 @@
     }
     .auth-section__title {
         font-size: 24px;
-        margin-bottom: 40px;
+        line-height: 29px;
+        margin-bottom: 20px;
         text-align: left;
     }
     .auth-section__img {
@@ -151,15 +171,21 @@
         margin-bottom: 40px;
 
     }
-
+    .auth-section__button_reg {
+        margin-top: 91px;
+          }
     }
 @media screen and  (max-width: 767px) {
     .auth-section{
-        width: 85.5%;
+        max-width: 260px;
     
+    }.auth-section__form {
+        padding-bottom: 30px;
     }
     .auth-section__header{
         align-self: center;
+        padding-top: 0px;
+
     }
     .auth-section__button {
         margin-top: 267px;
@@ -167,11 +193,12 @@
         line-height: 15px;
         padding: 0;
     }
-    .auth-section__button-reg {
-        margin-top: 179px;
+    .auth-section__button_reg {
+        margin-top: 169px;
     }
     .auth-section__input {
         min-height: 46px;
+        margin-bottom: 10px;
         
     }  
     .auth-section__subtitle {
@@ -181,12 +208,13 @@
     .auth-section__text {
         margin: 14px 0 0;
         font-size: 12px;
+        line-height: 15px;
       
     }
     .auth-section__title {
         font-size: 24px;
         line-height: 29px;
-        margin-bottom: 60px;
+        margin-bottom: 70px;
         text-align: center;
     }
     .auth-section__img {

@@ -10,10 +10,10 @@ function Footer() {
           <p className="footer__copyright">© 2023</p>
           <ul className="footer__links">
             <li>
-              <a className="footer__link hover-link" href="https://practicum.yandex.ru" rel="noreferrer" >Яндекс.Практикум</a>
+              <a className="footer__link" href="https://practicum.yandex.ru" target="_blank" rel="noreferrer" >Яндекс.Практикум</a>
             </li>
             <li>
-              <a className="footer__link hover-link" href="https://github.com/Yandex-Practicum" rel="noreferrer">GitHub</a>
+              <a className="footer__link" href="https://github.com/Yandex-Practicum" target="_blank" rel="noreferrer" >GitHub</a>
             </li>
           </ul>
         </div>

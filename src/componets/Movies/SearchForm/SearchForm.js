@@ -1,6 +1,6 @@
 import './SearchForm.css';
-import buttonLine from '../../../images/buttonLine.png';
-import buttonArrow from '../../../images/buttonArrow.png';
+import buttonLine from '../../../images/buttonLine.svg';
+import buttonArrow from '../../../images/buttonArrow.svg';
 
 const SearchForm = () => {
   
