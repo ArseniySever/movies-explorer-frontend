@@ -22,17 +22,17 @@ const Profile = ({ onSignOut, openPopup }) => {
     <>
     <main className='main'>
       <section className="profile">
-        <form className="profile__form" onSubmit={handleSubmit} noValidate>
+        <form className="profile__form" onSubmit={handleSubmit}>
           <h3 className="profile__welcome">Привет, Виталий!</h3>
           <section className="profile__inputs">
             <p className="profile__text">Имя</p>
-            <section className="profile__area profile__area-type_name">
-              <input className="profile__input" placeholder='Имя'/>
+            <section className="profile__area profile__area-type-name">
+              <input className="profile__input" placeholder='Имя' required type="text"/>
             </section>
-            <section className="profile__area profile__area-type_email">
-              <input className="profile__input"  placeholder='E-mail'/>
+            <section className="profile__area profile__area-type-email">
+              <input className="profile__input"  placeholder='E-mail' required type="email"/>
             </section>
-            <p className="profile__text profile__text-type_email">E-mail</p>
+            <p className="profile__text profile__text-type-email">E-mail</p>
           </section>
           {block === false ?
           <section className='profile__buttons'>

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Login from "../User/Login/Login";
 import Register from "../User/Register/Register";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
@@ -18,7 +17,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   
   return (
-    <CurrentUserContext.Provider >
       
       <div className="page">
       {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ?
@@ -37,7 +35,6 @@ function App() {
         </Routes>
 
       </div>
-    </CurrentUserContext.Provider>
   );
 }
 

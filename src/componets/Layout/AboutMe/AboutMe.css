@@ -300,7 +300,7 @@
     }
     
   
-        .aboutme__portfolio_title {
+        .aboutme__portfolio-title {
             font-size: 30px;
             line-height: 50px;
             margin: 0;
@@ -309,13 +309,13 @@
         }
         
     @media screen and (min-width: 768px) and  (max-width: 1279px) {
-      .aboutme__portfolio_title{
+      .aboutme__portfolio-title{
         min-height: 60px;
 
       }
   }
         @media screen and  (max-width: 767px) {
-          .aboutme__portfolio_title{
+          .aboutme__portfolio-title{
             line-height: 28px;
             font-size: 18px;
             max-height: 28px;
@@ -323,11 +323,11 @@
           }
       }
     
-        .aboutme__portfolio_arrow {
+        .aboutme__portfolio-arrow {
           max-height: 60px;
         }
         @media screen and  (max-width: 767px) {
-          .aboutme__portfolio_arrow{
+          .aboutme__portfolio-arrow{
             max-height: 28px;
 
           }
@@ -338,7 +338,7 @@
             margin: 0;
             padding: 0;
         }
-        .aboutme__portfolio-link_last{
+        .aboutme__portfolio-link-last{
           border-bottom: none;
         }
      

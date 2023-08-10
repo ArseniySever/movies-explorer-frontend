@@ -22,13 +22,13 @@ function MoviesCard({cardData}) {
         type="checkbox"
         className="movies__save"
         onClick={changeButton}>
-        <p className="movies__save_name">Сохранить</p>
+        <p className="movies__save-name">Сохранить</p>
       </button>) : 
       <button
       type="checkbox"
       className="movies__save-active"
       >
-        <img className="movies__save_img" src={check} alt="Галочка"></img>
+        <img className="movies__save-img" src={check} alt="Галочка"></img>
         </button>}</section>
 
            : 
@@ -36,7 +36,7 @@ function MoviesCard({cardData}) {
             type="button"
             className="movies__delete"
           >
-            <img className="movies__delete_img" src={close} alt="кнопка удаления картоки"></img>
+            <img className="movies__delete-img" src={close} alt="кнопка удаления картоки"></img>
           </button>
           }
       <img
@@ -46,7 +46,7 @@ function MoviesCard({cardData}) {
         />
         <p className="movies__title">{cardData.name}</p>
         <div className="movies__area">
-          <p className="movies__houre_lenght">1ч 17м</p>
+          <p className="movies__houre-lenght">1ч 17м</p>
         </div>
       </div>
     </div>

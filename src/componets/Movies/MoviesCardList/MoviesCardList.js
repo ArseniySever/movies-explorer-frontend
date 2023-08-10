@@ -6,9 +6,9 @@ const MoviesCardList = () => {
     return (
         <>
         <section className="movielist">
-        {initialCards.map((film) => {
-            return <Movies  key={film.id || film.movieId}
-            cardData={film}/>;
+        {initialCards.map((props) => {
+            return <Movies  key={Math.random()}
+            cardData={props}/>;
         }) 
         }
         </section>

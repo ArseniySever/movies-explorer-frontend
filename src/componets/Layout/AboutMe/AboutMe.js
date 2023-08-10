@@ -3,8 +3,8 @@ import avatar from "../../../images/avatar.jpg";
 
 function AboutMe() {
   return (
-    <section className="aboutme">
-      <h1 className="aboutme__title">
+    <section className="aboutme"  >
+      <h1 className="aboutme__title" id="aboutme">
       Студент
       </h1>
         <section className='aboutme__block'>
@@ -36,20 +36,20 @@ function AboutMe() {
             <ul className='aboutme__portfolio-block'>
                 <li className='aboutme__portfolio-tab'>
                     <a href='https://github.com/ArseniySever/how-to-learn' className='aboutme__portfolio-link' target="_blank" rel="noreferrer" >
-                        <p className='aboutme__portfolio_title'>Статичный сайт</p>
-                        <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
+                        <p className='aboutme__portfolio-title'>Статичный сайт</p>
+                        <p className='aboutme__portfolio-title aboutme__portfolio-arrow'>↗</p>
                     </a>
                 </li>
                 <li className='aboutme__portfolio-tab'>
                     <a href='https://github.com/ArseniySever/russian-travel' className='aboutme__portfolio-link' target="_blank" rel="noreferrer" >
-                        <p className='aboutme__portfolio_title'>Адаптивный сайт</p>
-                        <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
+                        <p className='aboutme__portfolio-title'>Адаптивный сайт</p>
+                        <p className='aboutme__portfolio-title aboutme__portfolio-arrow'>↗</p>
                     </a>
                 </li>
                 <li className='aboutme__portfolio-tab '>
-                    <a href='https://github.com/ArseniySever/mesto-react' className='aboutme__portfolio-link aboutme__portfolio-link_last' target="_blank" rel="noreferrer" >
-                        <p className='aboutme__portfolio_title'>Одностраничное приложение</p>
-                        <p className='aboutme__portfolio_title aboutme__portfolio_arrow'>↗</p>
+                    <a href='https://github.com/ArseniySever/mesto-react' className='aboutme__portfolio-link aboutme__portfolio-link-last' target="_blank" rel="noreferrer" >
+                        <p className='aboutme__portfolio-title'>Одностраничное приложение</p>
+                        <p className='aboutme__portfolio-title aboutme__portfolio-arrow'>↗</p>
                     </a>
                 </li>
             </ul>

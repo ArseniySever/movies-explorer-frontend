@@ -31,7 +31,7 @@ const handleSigninSubmit = (e) => {
             <img className='auth-section__img' src={logo} alt='Логтотип ПоискКино'>
             </img>
           </a>
-          <form className="auth-section__form" onSubmit={handleSigninSubmit} noValidate>
+          <form className="auth-section__form" onSubmit={handleSigninSubmit}>
             <h1 className="auth-section__title">Рады видеть!</h1>
             <h2 className="auth-section__subtitle">E-mail</h2>
             <input

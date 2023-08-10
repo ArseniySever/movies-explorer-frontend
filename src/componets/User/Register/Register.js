@@ -33,7 +33,7 @@ function Register(props) {
             </img>
       </a>
 
-        <form className="auth-section__form" onSubmit={handleRegisterSubmit} noValidate>
+        <form className="auth-section__form" onSubmit={handleRegisterSubmit}>
           <h1 className="auth-section__title">Добро пожаловать!</h1>
           <h2 className="auth-section__subtitle">Имя</h2>
           <input
@@ -66,7 +66,7 @@ function Register(props) {
             placeholder='Пароль'
           />
           
-          <button type="submit" className="auth-section__button auth-section__button_reg">Зарегистрироваться</button>
+          <button type="submit" className="auth-section__button auth-section__button-reg">Зарегистрироваться</button>
           <p className="auth-section__text">Уже зарегистрированы? <Link className="auth-section__link" to="/sign-in">Войти</Link></p>
         </form>
       </section>

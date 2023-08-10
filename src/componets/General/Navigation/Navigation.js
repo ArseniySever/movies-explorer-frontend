@@ -15,20 +15,19 @@ const Navigation = () => {
           <section className="navigation__list-container">
             <button className="navigation__close" type="button" onClick={handleSwithcMenu}></button>
             <ul className="navigation__list">
-              <li className="navigation__list-item navigation__list-item_main">
+              <li className="navigation__list-item navigation__list-item-main">
                 <Link to="/" className="navigation__link" onClick={handleSwithcMenu}>Главная</Link>
               </li>
               <li className="navigation__list-item">
-                <NavLink to="/movies" className="navigation__link"
-                  activeClassName="navigation__link_active" onClick={handleSwithcMenu}>Фильмы</NavLink>
+                <NavLink to="/movies" className={({ isActive }) => isActive ? "navigation__link_active" : "navigation__link"}
+                   onClick={handleSwithcMenu}>Фильмы</NavLink>
               </li>
               <li className="navigation__list-item">
-                <NavLink to="/saved-movies" className="navigation__link"
-                  activeClassName="navigation__link_active" onClick={handleSwithcMenu}>Сохранённые фильмы</NavLink>
+                <NavLink to="/saved-movies" className={({ isActive }) => isActive ? "navigation__link_active" : "navigation__link"} onClick={handleSwithcMenu}>Сохранённые фильмы</NavLink>
               </li>
             </ul>
           </section>
-          <Link to="/profile" className="navigation__link navigation__link_type_profile" onClick={handleSwithcMenu}>Аккаунт</Link>
+          <Link to="/profile" className="navigation__link navigation__link-profile" onClick={handleSwithcMenu}>Аккаунт</Link>
         </section>
       </section>
     </nav>

@@ -87,7 +87,7 @@
     background-color: #2F2F2F;
     border-radius: 3px;
 }
-.movies__houre_lenght{
+.movies__houre-lenght{
     font-family: "Inter", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -119,7 +119,7 @@
     transition: opacity .3s;
 }
 
-.movies__save_name{
+.movies__save-name{
     font-family: "Inter", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -166,7 +166,7 @@
 .movies__save:hover{
     opacity: 0.6;
 }
-.movies__delete_img{
+.movies__delete-img{
     height: 8px;
     width: 8px;
     margin: auto;
@@ -191,7 +191,7 @@
     align-items: center;
     transition: opacity .3s;
 }
-.movies__save_img{
+.movies__save-img{
     align-items: center;
     margin-bottom: 1px;
 }

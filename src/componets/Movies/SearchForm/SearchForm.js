@@ -9,7 +9,7 @@ const SearchForm = () => {
     <>
         <form className="searchform">
             <section className='searchform__finder'>
-                <input className='searchform__input' placeholder='Фильм'></input>
+                <input className='searchform__input' placeholder='Фильм' required></input>
                 <button className='searchform__button'>
                     <img className="searchform__button-line" alt="Линия в кнопке" src={buttonLine}></img>
                     <img className="searchform__button-arrow" alt="Стрелочка в конпке" src={buttonArrow}></img>
