@@ -1,4 +1,4 @@
-import './Promo.css';
+import "./Promo.css";
 
 function Promo() {
   return (
@@ -6,25 +6,23 @@ function Promo() {
       <h1 className="promo__title">
         Учебный проект студента факультета Веб-разработки.
       </h1>
-      <section className='promo__block'>
-        <section className='promo__point'>
-            <a className="promo__subtitle" href='#aboutproject'>
-                О проекте
-            </a>
+      <section className="promo__block">
+        <section className="promo__point">
+          <a className="promo__subtitle" href="#aboutproject">
+            О проекте
+          </a>
         </section>
-        <section className='promo__point'>
-            <a className="promo__subtitle" href="#techs">
-                Технологии
-            </a>
+        <section className="promo__point">
+          <a className="promo__subtitle" href="#techs">
+            Технологии
+          </a>
         </section>
-        <section className='promo__point'>
-            <a className="promo__subtitle" href="#aboutme">
-                Студент
-            </a>
+        <section className="promo__point">
+          <a className="promo__subtitle" href="#aboutme">
+            Студент
+          </a>
         </section>
       </section>
-      
-      
     </section>
   );
 }

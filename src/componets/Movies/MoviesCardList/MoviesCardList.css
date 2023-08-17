@@ -10,6 +10,20 @@
     margin-top: 80px;
     margin-bottom: 47px;
 }
+.movielist__title{
+    display: block;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+.movielist__title-deactive{
+    display :none;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .movielist {
         justify-content: center;

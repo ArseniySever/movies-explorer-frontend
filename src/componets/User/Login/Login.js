@@ -1,28 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "../AuthForm/AuthForm.css"
-import logo from '../../../images/logo.svg';
+import React from "react";
+import { useForm } from 'react-hook-form';
+import { Link } from "react-router-dom";
+import "../AuthForm/AuthForm.css";
+import logo from "../../../images/logo.svg";
 import "../../Layout/Main/Main.css";
 
-function Login(props) {
+function Login({onSignin, isLoading}) {
 
-const [email, setEmail] = React.useState('');
-const [password, setPassword] = React.useState('');
+  const [formValues, setFormValues] = React.useState({
+    email: "",
+    password: "",
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues((prevState) => ({ ...prevState, [name]: value }));
+  };
 
-const handleEmailChange = (e) => {
-  setEmail(e.target.value);
-}
-
-const handlePasswordChange = (e) => {
-  setPassword(e.target.value);
-}
-
-const handleSigninSubmit = (e) => {
-  e.preventDefault();
-  props.onSignin(email, password);
-    
-}
-
+  const handleSigninSubmit = (e) => {
+    const { email, password } = formValues;
+    onSignin( email, password);
+  };
   return (
   <>
       <main className='main'>
@@ -31,30 +33,64 @@ const handleSigninSubmit = (e) => {
             <img className='auth-section__img' src={logo} alt='Логтотип ПоискКино'>
             </img>
           </a>
-          <form className="auth-section__form" onSubmit={handleSigninSubmit}>
+          <form className="auth-section__form" onSubmit={handleSubmit(handleSigninSubmit)}>
             <h1 className="auth-section__title">Рады видеть!</h1>
             <h2 className="auth-section__subtitle">E-mail</h2>
-            <input
+            <input  {...register('email', {
+                required: true,
+                minLength: 6,
+                maxLength: 35,
+                onChange: (e) => handleInputChange(e),
+                pattern: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/,
+              })}
               className="auth-section__input"
+              name="email"
               type="email"
-              onChange={handleEmailChange}
-              value={email || ''}
-              required
-              placeholder='E-mail'
+              value={formValues.email}
+              placeholder="E-mail"
             />
-            <span className="auth__item-error email-input-error" />
+              {errors.email && errors.email.type === 'required' && (
+              <span className="auth-section__error">
+                Это поле обязательно для заполнения
+              </span>
+            )}
+            {errors.email && errors.email.type === 'pattern' && (
+              <span className="auth-section__error">
+                Поле "email" не соответствует шаблону электронной почты
+              </span>
+            )}
             <h2 className="auth-section__subtitle">Пароль</h2>
-            <input
+            <input {...register('password', {
+                required: true,
+                minLength: 6,
+                maxLength: 35,
+                onChange: (e) => handleInputChange(e),
+              })}
               className="auth-section__input"
+              name="password"
               type="password"
-              onChange={handlePasswordChange}
-              value={password || ''}
-              required
-              placeholder='Пароль'
+              value={formValues.password}            
+              placeholder="Пароль"
             />
-            <span className="auth__item-error password-input-error" />
-
-            <button type="submit" className="auth-section__button">Войти</button>
+             {errors.password && errors.password.type === 'required' && (
+              <span className="auth-section__error">
+                Это поле обязательно для заполнения
+              </span>
+            )}
+            {errors.password && errors.password.type === 'minLength' && (
+              <span className="auth-section__error">
+                Пароль содержит не менее 6 символов
+              </span>
+            )}
+            {errors.password && errors.password.type === 'maxLength' && (
+              <span className="auth-section__error">Пароль слишком длинный</span>
+            )}
+            <section className='ausection__buttons'>
+              <button className={`auth-section__button ${
+            (!isLoading) && "auth-section__button_disabled"}`}
+              type="submit"
+              >{!isLoading ? "Загрузка" : "Войти"}</button>
+            </section>
             <p className="auth-section__text">
                 Еще не зарегистрированы?
                 <Link to="/sign-up" className="auth-section__link">
