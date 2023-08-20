@@ -50,7 +50,6 @@ function Register({ onRegist, isLoading}) {
               name="name"
               type="text"
               value={formValues.name}
-              disabled={isLoading}              
               placeholder="Имя"
             />
               {errors.name && errors.name.type === 'required' && (
