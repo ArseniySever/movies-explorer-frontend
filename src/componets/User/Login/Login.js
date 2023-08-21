@@ -87,7 +87,9 @@ function Login({onSignin, isLoading}) {
             )}
             <section className='ausection__buttons'>
               <button className={`auth-section__button ${
-            (!isLoading) && "auth-section__button_disabled"}`}
+                  errors.name &&
+                  errors.password &&
+                  errors.email && "auth-section__button_disabled"}`}
               type="submit"
               >{!isLoading ? "Загрузка" : "Войти"}</button>
             </section>

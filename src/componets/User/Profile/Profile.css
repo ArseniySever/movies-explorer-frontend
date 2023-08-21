@@ -55,7 +55,10 @@
     font-family: "Inter", Arial, sans-serif;
 
   }
-  
+  .profile__error-green{
+    color: #2be080;
+
+  }
   .profile__text:first-of-type {
     grid-row: 1;
     grid-column: 1;

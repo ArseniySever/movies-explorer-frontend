@@ -223,4 +223,10 @@
     font-size: 12px;
     line-height: 15px;
     }
+    .movies__save:hover{
+        opacity: 1;
+    }
+    .movies__delete:hover{
+        opacity: 1;
+    }
 }

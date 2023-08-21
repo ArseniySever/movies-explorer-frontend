@@ -6,19 +6,20 @@ import "../AuthForm/AuthForm.css";
 import "../../Layout/Main/Main.css";
 import CurrentContext from "../../../contexts/CurrentUserContext";
 
-const Profile = ({ onSignOut, onUpdateUser, isLoading }) => {
+const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
   const currentUser = React.useContext(CurrentContext);
 
   const [block, setChangeBlock] = useState(false);
-  const [error, setCatchError] = useState(false);
+
   const [formValues, setFormValues] = React.useState({
     name: "",
     email: "",
   });
+  React.useEffect(() => {
+    setFormValues(currentUser.name);
+    setFormValues(currentUser.email);
+  }, [currentUser]);
 
-  function catchError() {
-    setCatchError(true);
-  }
   function changeBlock() {
     setChangeBlock(true);
   }
@@ -29,6 +30,7 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading }) => {
   } = useForm();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setFormValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
@@ -124,10 +126,16 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading }) => {
                 ) : (
                   <></>
                 )}
+                {isSaveData === true ? (
+                  <h4 className="profile__error profile__error-green">
+                    Данные успешно обновлены
+                  </h4>
+                ) : (
+                  <></>
+                )}
                 <button
                   className={`auth-section__button profile__button-save ${isLoading && "auth-section__button_disabled"
                     }`}
-                  onClick={catchError}
                   isLoading={isLoading}
                 >
                   Сохранить

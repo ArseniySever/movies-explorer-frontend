@@ -20,6 +20,8 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [currentUser, setCurrentUser] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(true);
+  const [error, setCatchError] = useState(false);
+  const [isSaveData, setIsSaveData] = useState(false);
 
   const navigate = useNavigate();
 
@@ -50,15 +52,20 @@ function App() {
     Auth.editUserInfo(name, email)
       .then((newinfo) => {
         setCurrentUser(newinfo.user);
+        setCatchError(false);
+        setIsSaveData(true);
       })
-      .catch((err) => console.log(`Error ${err} in editUserAvatar`));
+      .catch((err) => {
+        setCatchError(true);
+      console.log(`Error ${err} in editUserAvatar`);
+      })
   }
   function handleSignin(email, password) {
     Auth.authorization(email, password)
       .then((data) => {
         if (data) {
           setLoggedIn(true);
-          navigate("/", { replace: true });
+          navigate("/movies", { replace: true });
         }
       })
       .catch((err) => {
@@ -70,7 +77,8 @@ function App() {
     if (email && password && name) {
       Auth.registration(email, password, name)
         .then((res) => {
-          navigate("/sign-in", { replace: true });
+          navigate("/movies", { replace: true });
+          setLoggedIn(true);
         })
         .catch((err) => {
           console.log(err);
@@ -107,8 +115,8 @@ function App() {
               <Register onRegist={handleRegister} isLoading={isLoading}/>
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<Main />} />
+          <Route path="*" element={<NotFoundPage />} />
 
           <Route
             path="/profile"
@@ -118,6 +126,8 @@ function App() {
                 component={Profile}
                 onSignOut={handleLogout}
                 onUpdateUser={handleUpdateUser}
+                error={error}
+                isSaveData={isSaveData}
                
               />
             }

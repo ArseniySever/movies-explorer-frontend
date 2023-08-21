@@ -118,7 +118,10 @@ function Register({ onRegist, isLoading}) {
             <section className="ausection__buttons">
               <button
                 className={`auth-section__button auth-section__button-reg${
-                  isLoading && "auth-section__button_disabled"
+                  errors.name &&
+                  errors.password &&
+                  errors.email &&
+                  "auth-section__button_disabled"
                 }`}
                 type="submit"
               >
