@@ -223,10 +223,15 @@
     font-size: 12px;
     line-height: 15px;
     }
-    .movies__save:hover{
+    .movies__rectangle:hover{
+        display: flex;
+        transition: none;
+        
+      }
+    .movies__save{
         opacity: 1;
     }
-    .movies__delete:hover{
+    .movies__delete{
         opacity: 1;
     }
 }

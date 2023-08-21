@@ -12,13 +12,10 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
   const [block, setChangeBlock] = useState(false);
 
   const [formValues, setFormValues] = React.useState({
-    name: "",
-    email: "",
+    name: currentUser.name,
+    email: currentUser.email,
   });
-  React.useEffect(() => {
-    setFormValues(currentUser.name);
-    setFormValues(currentUser.email);
-  }, [currentUser]);
+  
 
   function changeBlock() {
     setChangeBlock(true);

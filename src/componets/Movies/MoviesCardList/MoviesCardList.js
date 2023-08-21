@@ -16,17 +16,23 @@ const MoviesCardList = ({ cards, errorMesssage }) => {
   const setMoviesRules = () => {
     const width = window.innerWidth;
     if (pathname === "/saved-movies") {
-      setMaxMovies(cards.length);
+      if (width <= 767) {
+        setMaxMovies(5);
+      } else if (width <= 1279) {
+        setMaxMovies(8);
+      } else {
+        setMaxMovies(12);
+      }
     }
     if (width <= 767) {
       setMaxMovies(5);
       setMotion(2);
     } else if (width <= 1279) {
       setMaxMovies(8);
-      setMotion(4);
+      setMotion(2);
     } else {
       setMaxMovies(12);
-      setMotion(4);
+      setMotion(3);
     }
   };
   React.useEffect(() => {
