@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://movie.search.nomoredomains.xyz;';
+export const BASE_URL = 'https://movie.search.nomoredomains.xyz;';
 
 const handleResponse = (response) => {
   if (!response.ok) {
