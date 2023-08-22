@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://movie.search.nomoredomains.xyz';
+export const BASE_URL = 'http://movie.search.nomoredomains.xyz;';
 
 const handleResponse = (response) => {
   if (!response.ok) {
@@ -113,3 +113,13 @@ export const getContent = () => {
       return data.data;
     });
 } 
+export const logout = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+    .then(handleResponse)
+};

@@ -46,7 +46,7 @@ function Login({onSignin, isLoading}) {
               className="auth-section__input"
               name="email"
               type="email"
-              value={formValues.email}
+              value={formValues.email || ""}
               placeholder="E-mail"
             />
               {errors.email && errors.email.type === 'required' && (
@@ -69,7 +69,7 @@ function Login({onSignin, isLoading}) {
               className="auth-section__input"
               name="password"
               type="password"
-              value={formValues.password}            
+              value={formValues.password || ""}            
               placeholder="Пароль"
             />
              {errors.password && errors.password.type === 'required' && (
@@ -87,9 +87,11 @@ function Login({onSignin, isLoading}) {
             )}
             <section className='ausection__buttons'>
               <button className={`auth-section__button ${
-                  errors.name &&
-                  errors.password &&
-                  errors.email && "auth-section__button_disabled"}`}
+                  (errors.email ||
+                  errors.password) && ('auth-section__button_disabled')}`}
+                  disabled={
+                    errors.password ||
+                    errors.email }
               type="submit"
               >{!isLoading ? "Загрузка" : "Войти"}</button>
             </section>

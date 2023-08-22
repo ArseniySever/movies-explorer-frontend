@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 import * as mainApi from "../../../utils/MainApi";
 
 function MoviesCard({ cardData }) {
-  const [button, setChangeButton] = React.useState(false);
   const [isSaved, setSaved] = React.useState(false);
   const [savedId, setSavedId] = React.useState("");
   const location = useLocation();
@@ -28,7 +27,6 @@ function MoviesCard({ cardData }) {
   }, [cardData._id, cardData.id]);
 
   const handleMovieSaved = (evt) => {
-    setChangeButton(true);
     if (!isSaved) {
       const newMovie = {};
       const { image, id } = cardData;
@@ -66,7 +64,7 @@ function MoviesCard({ cardData }) {
         });
     } else {
       mainApi
-        .deleteMovie(savedId)
+        .deleteMovie(savedId || isSaved)
         .then(() => {
           setSaved(false);
           const savedMovies = JSON.parse(localStorage.getItem("savedMovies"));
@@ -92,27 +90,18 @@ function MoviesCard({ cardData }) {
       <div className="movies__rectangle">
         {pathname === "/movies" ? (
           <section>
-            {button === false ? (
+            
               <button
                 type="checkbox"
-                className="movies__save"
+                className={isSaved ? "movies__save-active" : "movies__save" }
                 onClick={handleMovieSaved}
-              >
-                <p className="movies__save-name">Сохранить</p>
+              >{isSaved ? 
+              <img
+              className="movies__save-img"
+              src={check}
+              alt="Галочка"
+            ></img> : <p className="movies__save-name">Сохранить</p> }
               </button>
-            ) : (
-              <button
-                type="checkbox"
-                className="movies__save-active"
-                onClick={handleMovieSaved}
-              >
-                <img
-                  className="movies__save-img"
-                  src={check}
-                  alt="Галочка"
-                ></img>
-              </button>
-            )}
           </section>
         ) : (
           <button

@@ -49,7 +49,7 @@ function Register({ onRegist, isLoading}) {
               className="auth-section__input"
               name="name"
               type="text"
-              value={formValues.name}
+              value={formValues.name || ""}
               placeholder="Имя"
             />
               {errors.name && errors.name.type === 'required' && (
@@ -75,7 +75,7 @@ function Register({ onRegist, isLoading}) {
               className="auth-section__input"
               name="email"
               type="email"
-              value={formValues.email}
+              value={formValues.email || ""}
               placeholder="E-mail"
             />
               {errors.email && errors.email.type === 'required' && (
@@ -98,7 +98,7 @@ function Register({ onRegist, isLoading}) {
               className="auth-section__input"
               name="password"
               type="password"
-              value={formValues.password}            
+              value={formValues.password || ""}            
               placeholder="Пароль"
             />
              {errors.password && errors.password.type === 'required' && (
@@ -118,11 +118,14 @@ function Register({ onRegist, isLoading}) {
             <section className="ausection__buttons">
               <button
                 className={`auth-section__button auth-section__button-reg${
-                  errors.name &&
-                  errors.password &&
-                  errors.email &&
-                  "auth-section__button_disabled"
+                  (errors.name ||
+                  errors.password ||
+                  errors.email) &&
+                  ('auth-section__button_disabled')
                 }`}
+                disabled={errors.name ||
+                  errors.password ||
+                  errors.email }
                 type="submit"
               >
                 {isLoading ? "Зарегистрироваться" : "Загрузка... "}

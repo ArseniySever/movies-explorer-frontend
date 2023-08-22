@@ -30,6 +30,7 @@ function App() {
       Auth.getUserInfo()
         .then((user) => {
           setCurrentUser(user);
+          
         })
         .catch(console.error);
     }
@@ -65,7 +66,9 @@ function App() {
       .then((data) => {
         if (data) {
           setLoggedIn(true);
+          setCurrentUser(data);
           navigate("/movies", { replace: true });
+          
         }
       })
       .catch((err) => {
@@ -86,12 +89,19 @@ function App() {
     }
   }
 
-  const handleLogout = () => {
-    setCurrentUser({});
-    localStorage.clear();
-    setLoggedIn(false);
-    navigate("/", { replace: true });
-  };
+  function handleLogout() {
+    Auth.logout() 
+    .then(() => {
+      setCurrentUser({});
+      localStorage.clear();
+      setLoggedIn(false);
+      navigate("/", { replace: true });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -105,7 +115,7 @@ function App() {
           ""
         )}
         <Routes>
-          <Route
+        <Route
             path="/sign-in"
             element={<Login onSignin={handleSignin}  isLoading={isLoading}/>}
           />
@@ -115,8 +125,8 @@ function App() {
               <Register onRegist={handleRegister} isLoading={isLoading}/>
             }
           />
-          <Route path="/" element={<Main />} />
-          <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={!loggedIn ?<Main/> : <ProtectedRoute loggedIn={loggedIn}
+            component={Main}></ProtectedRoute>} />
 
           <Route
             path="/profile"
@@ -148,6 +158,8 @@ function App() {
               <ProtectedRoute loggedIn={loggedIn} component={SaveMoviesPage} />
             }
           />
+      
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </CurrentUserContext.Provider>

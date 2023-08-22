@@ -9,10 +9,9 @@ import buttonArrow from "../../../images/buttonArrow.svg";
 
 const SearchForm = ({ handleSearch }) => {
   const [shorts, setShorts] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = React.useState('');
   const [error, setError] = React.useState(false);
   const { pathname } = useLocation();
-
 
   const {
     register,
@@ -26,54 +25,57 @@ const SearchForm = ({ handleSearch }) => {
     setShorts(!shorts);
     handleSearch(inputValue, !shorts);
     if (pathname === "/movies") {
-      localStorage.setItem("shorts", !shorts);
+      localStorage.setItem('shorts', !shorts);
     }
   };
 
   const handleSubmitFilm = (evt) => {
     if (!inputValue) {
       setError(true);
-      evt.target.elements["searchform__input"].focus();
+      evt.target.elements["search-query"].focus();
       return;
     }
     setError(false);
     if (pathname === "/movies") {
-      localStorage.setItem("input", inputValue);
+      localStorage.setItem('query', inputValue);
     }
     handleSearch(inputValue, shorts);
   };
 
   React.useEffect(() => {
     if (pathname === "/movies") {
-      const savedValuInput = localStorage.getItem("input");
+      const savedValueInput = localStorage.getItem('query');
       const savedShorts = JSON.parse(localStorage.getItem("shorts"));
-      if (savedValuInput) {
-        setInputValue(savedValuInput);
-      }
+      
       if (savedShorts) {
         setShorts(savedShorts);
       }
-      if (savedValuInput || savedShorts === true) {
-        handleSearch(savedValuInput, savedShorts);
+      if (savedValueInput) {
+        setInputValue(savedValueInput);
+      }
+      if (savedValueInput || savedShorts === true) {
+        handleSearch(savedValueInput, savedShorts);
       }
     }
   }, []);
 
+
   return (
     <>
-      <form className="searchform" onSubmit={handleSubmit(handleSubmitFilm)}>
+      <form className="searchform" onSubmit={handleSubmit(handleSubmitFilm)} autoComplete="off">
         <section className="searchform__finder">
           <section className="searchform__finder-block">
             <input
               {...register("name", {
-                required: true,
+                
                 onChange: (e) => handeleInput(e),
               })}
+              id="search-query"
               className="searchform__input"
               placeholder="Фильм"
               value={inputValue}
             ></input>
-            {errors.name && errors.name.type === "required" && (
+            {inputValue === ""  && (
               <span className="auth-section__error auth-section__error-film">
                 Нужно ввести ключевое слово
               </span>
@@ -99,6 +101,7 @@ const SearchForm = ({ handleSearch }) => {
               value={shorts}
               type="checkbox"
               onChange={handelChecSwitch}
+              checked={shorts}
             />
             <span className="searchform__slider" />
           </label>

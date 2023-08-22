@@ -13,7 +13,25 @@ const Movies = () => {
   const [movies, setMovies] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState("");
+  React.useEffect(() => {
+    const savedMovies = localStorage.getItem("savedMovies");
+    if (!savedMovies) {
+      setIsLoading(true);
 
+      mainApi
+        .getUsersMovies()
+        .then((data) => {
+          if (data.length > 0) {
+            setMovies(data);
+            localStorage.setItem("savedMovies", JSON.stringify(data));
+          }
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setError("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз");
+        });
+    }
+  }, []);
   const filter = (query, shorts) => {
     const storedMovies = JSON.parse(localStorage.getItem("movies"));
     const filtered = filtredFilms(storedMovies, query, shorts);
@@ -41,27 +59,6 @@ const Movies = () => {
     }
   };
   
-  React.useEffect(() => {
-    const savedMovies = localStorage.getItem("savedMovies");
-    if (!savedMovies) {
-      setIsLoading(true);
-
-      mainApi
-        .getUsersMovies()
-        .then((data) => {
-          if (data.length > 0) {
-            setMovies(data);
-            localStorage.setItem("savedMovies", JSON.stringify(data));
-          }
-          setIsLoading(false);
-        })
-        .catch(() => {
-          setError("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз");
-        });
-    }
-  }, []);
-  console.log(movies);
-
   return (
     <>
       <main className="main">
