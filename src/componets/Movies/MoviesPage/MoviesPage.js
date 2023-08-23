@@ -66,7 +66,7 @@ const Movies = () => {
           <SearchForm handleSearch={handleSearch}></SearchForm>
           {isLoading ? (
         <LoaderButtonOn />
-      ) : (
+      ) : ( 
           <MoviesCardList cards={movies} errorMesssage={error} ></MoviesCardList>)}
         </section>
       </main>

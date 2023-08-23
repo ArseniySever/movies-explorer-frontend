@@ -3,6 +3,7 @@ import "./MoviesCardList.css";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "../../Movies/Preloader/Preloader.css";
+const constants = require('../../../utils/constantsMovies');
 
 const MoviesCardList = ({ cards, errorMesssage }) => {
   const { pathname } = useLocation();
@@ -17,22 +18,22 @@ const MoviesCardList = ({ cards, errorMesssage }) => {
     const width = window.innerWidth;
     if (pathname === "/saved-movies") {
       if (width <= 767) {
-        setMaxMovies(5);
+        setMaxMovies(constants.mobileMaxMovies);
       } else if (width <= 1279) {
-        setMaxMovies(8);
+        setMaxMovies(constants.minWindowMaxMovies);
       } else {
-        setMaxMovies(12);
+        setMaxMovies(constants.maxWindowMaxMovies);
       }
     }
     if (width <= 767) {
-      setMaxMovies(5);
-      setMotion(2);
+      setMaxMovies(constants.mobileMaxMovies);
+      setMotion(constants.littelStep);
     } else if (width <= 1279) {
-      setMaxMovies(8);
-      setMotion(2);
+      setMaxMovies(constants.minWindowMaxMovies);
+      setMotion(constants.littelStep);
     } else {
-      setMaxMovies(12);
-      setMotion(3);
+      setMaxMovies(constants.maxWindowMaxMovies);
+      setMotion(constants.bigStep);
     }
   };
   React.useEffect(() => {
@@ -40,7 +41,7 @@ const MoviesCardList = ({ cards, errorMesssage }) => {
     window.addEventListener("resize", () => {
       setTimeout(() => {
         setMoviesRules();
-      }, 500);
+      }, constants.timeOut);
     });
   }, []);
   return (

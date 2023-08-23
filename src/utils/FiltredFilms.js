@@ -1,3 +1,4 @@
+const constants = require('../utils/constantsMovies');
 
 export default function filtredFilms(array, query, short) {
   if (!array) {
@@ -13,7 +14,7 @@ export default function filtredFilms(array, query, short) {
   }
 
   if (short) {
-    return filtered.filter((element) => element.duration <= 40);
+    return filtered.filter((element) => element.duration <= constants.filtredMax);
   }
 
   return filtered;

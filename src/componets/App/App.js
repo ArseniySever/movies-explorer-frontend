@@ -28,19 +28,20 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) {
       Auth.getUserInfo()
-        .then((user) => {
-          setCurrentUser(user);
-          
-        })
-        .catch(console.error);
-    }
-  }, [loggedIn]);
+      .then((user) => {
+        setCurrentUser(user);
+     })
+      .catch(console.error);
+  }
+}, [loggedIn]);
   React.useEffect(() => {
     Auth.getContent()
       .then((data) => {
         if (data) {
           setIsLoading(false);
           setCurrentUser(data);
+          setLoggedIn(true)
+
           navigate("/", { replace: true });
           setIsLoading(true);
 

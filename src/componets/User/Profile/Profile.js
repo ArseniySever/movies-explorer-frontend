@@ -134,6 +134,7 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
                   className={`auth-section__button profile__button-save ${isLoading && "auth-section__button_disabled"
                     }`}
                   isLoading={isLoading}
+                  
                 >
                   Сохранить
                 </button>

@@ -117,15 +117,11 @@ function Register({ onRegist, isLoading}) {
          
             <section className="ausection__buttons">
               <button
-                className={`auth-section__button auth-section__button-reg${
-                  (errors.name ||
-                  errors.password ||
-                  errors.email) &&
-                  ('auth-section__button_disabled')
-                }`}
-                disabled={errors.name ||
-                  errors.password ||
-                  errors.email }
+                className={`auth-section__button ${
+                  (!formValues.name || !formValues.email || !formValues.password || errors.email ||
+                    errors.password) && ('auth-section__button_disabled')}`}
+                disabled={!formValues.name || !formValues.email || !formValues.password || errors.email ||
+                  errors.password || !isLoading}
                 type="submit"
               >
                 {isLoading ? "Зарегистрироваться" : "Загрузка... "}
