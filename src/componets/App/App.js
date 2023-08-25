@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, Navigate } from "react-router-dom";
 import Login from "../User/Login/Login";
 import Register from "../User/Register/Register";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
@@ -22,33 +22,36 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setCatchError] = useState(false);
   const [isSaveData, setIsSaveData] = useState(false);
-
+  const [isAuth, setIsAuth] = useState('auth', 'unknow', 'no_auth');
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (loggedIn) {
+    if (isAuth === "auth") {
       Auth.getUserInfo()
       .then((user) => {
         setCurrentUser(user);
+        setIsAuth('auth');
      })
-      .catch(console.error);
+      .catch((error) => {
+      console.log(error);
+      setIsAuth('no_auth');
+      });
+  
   }
-}, [loggedIn]);
+}, []);
   React.useEffect(() => {
     Auth.getContent()
       .then((data) => {
         if (data) {
           setIsLoading(false);
           setCurrentUser(data);
-          setLoggedIn(true)
-
           navigate("/", { replace: true });
           setIsLoading(true);
 
         }
       })
       .catch(console.error);
-  }, [navigate]);
+  }, []);
 
   function handleUpdateUser(name, email) {
     Auth.editUserInfo(name, email)
@@ -66,7 +69,7 @@ function App() {
     Auth.authorization(email, password)
       .then((data) => {
         if (data) {
-          setLoggedIn(true);
+          setIsAuth('auth');
           setCurrentUser(data);
           navigate("/movies", { replace: true });
           
@@ -74,6 +77,7 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
+        setIsAuth('no_auth');
 
       });
   }
@@ -82,7 +86,7 @@ function App() {
       Auth.registration(email, password, name)
         .then((res) => {
           navigate("/movies", { replace: true });
-          setLoggedIn(true);
+          setIsAuth('auth');
         })
         .catch((err) => {
           console.log(err);
@@ -95,7 +99,7 @@ function App() {
     .then(() => {
       setCurrentUser({});
       localStorage.clear();
-      setLoggedIn(false);
+      setIsAuth('no_auth');
       navigate("/", { replace: true });
     })
     .catch((err) => {
@@ -111,29 +115,28 @@ function App() {
         pathname === "/movies" ||
         pathname === "/saved-movies" ||
         pathname === "/profile" ? (
-          <Header loggedIn={loggedIn} />
+          <Header isAuth={isAuth} />
         ) : (
           ""
         )}
         <Routes>
         <Route
             path="/sign-in"
-            element={<Login onSignin={handleSignin}  isLoading={isLoading}/>}
+            element={isAuth === "no_auth" ? <Login onSignin={handleSignin}  isLoading={isLoading}/> : <Navigate to='/'/>} 
           />
           <Route
             path="/sign-up"
-            element={
-              <Register onRegist={handleRegister} isLoading={isLoading}/>
+            element={ isAuth === "no_auth" ? <Register onRegist={handleRegister} isLoading={isLoading}/> : <Navigate to='/'/>
             }
           />
-        <Route path="/" element={!loggedIn ?<Main/> : <ProtectedRoute loggedIn={loggedIn}
+        <Route path="/" element={isAuth === "no_auth" ?<Main/> : <ProtectedRoute isAuth={isAuth}
             component={Main}></ProtectedRoute>} />
 
           <Route
             path="/profile"
             element={
               <ProtectedRoute
-                loggedIn={loggedIn}
+                isAuth={isAuth}
                 component={Profile}
                 onSignOut={handleLogout}
                 onUpdateUser={handleUpdateUser}
@@ -147,7 +150,7 @@ function App() {
             path="/movies"
             element={
               <ProtectedRoute
-                loggedIn={loggedIn}
+                isAuth={isAuth}
                 component={Movies}
                 cards={cards}
               />
@@ -156,7 +159,7 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute loggedIn={loggedIn} component={SaveMoviesPage} />
+              <ProtectedRoute isAuth={isAuth} component={SaveMoviesPage} />
             }
           />
       

@@ -1,11 +1,12 @@
 import "./Navigation.css";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [showItems, setShowItems] = useState(false);
 
   const handleSwithcMenu = () => setShowItems(!showItems);
+  const { pathname } = useLocation();
 
   return (
     <nav className="navigation">
@@ -29,7 +30,8 @@ const Navigation = () => {
               <li className="navigation__list-item navigation__list-item-main">
                 <Link
                   to="/"
-                  className="navigation__link"
+                  className={ pathname === "/" ? "navigation__link_active" : "navigation__link"
+                  }
                   onClick={handleSwithcMenu}
                 >
                   Главная
@@ -39,7 +41,7 @@ const Navigation = () => {
                 <NavLink
                   to="/movies"
                   className={({ isActive }) =>
-                    isActive ? "navigation__link_active" : "navigation__link"
+                    isActive || pathname === "/movies" ? "navigation__link_active" : "navigation__link"
                   }
                   onClick={handleSwithcMenu}
                 >
@@ -50,7 +52,7 @@ const Navigation = () => {
                 <NavLink
                   to="/saved-movies"
                   className={({ isActive }) =>
-                    isActive ? "navigation__link_active" : "navigation__link"
+                    isActive || pathname === "/saved-movies" ? "navigation__link_active" : "navigation__link"
                   }
                   onClick={handleSwithcMenu}
                 >
