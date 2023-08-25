@@ -29,8 +29,8 @@ function App() {
     if (isAuth === "auth") {
       Auth.getUserInfo()
       .then((user) => {
-        setCurrentUser(user);
         setIsAuth('auth');
+        setCurrentUser(user);
      })
       .catch((error) => {
       console.log(error);
