@@ -70,7 +70,7 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isAuth}) => {
             onSubmit={handleSubmit(handleProfileSubmit)}
           >
             <h3 className="profile__welcome">
-              Привет, {currentUserInfo?.name ?? "Виталий"}!
+              Привет, {formValues?.name ?? "Виталий"}!
             </h3>
             <section className="profile__inputs">
               <p className="profile__text">Имя</p>
