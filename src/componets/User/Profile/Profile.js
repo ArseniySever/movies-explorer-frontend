@@ -6,19 +6,20 @@ import "../AuthForm/AuthForm.css";
 import "../../Layout/Main/Main.css";
 import CurrentContext from "../../../contexts/CurrentUserContext";
 
-const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
-  const currentUser = React.useContext(CurrentContext);
+import * as Auth from "../../../utils/MainApi";
 
+const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isAuth}) => {
+  const currentUserInfo = React.useContext(CurrentContext);
+  console.log(currentUserInfo);
   const [block, setChangeBlock] = useState(false);
-
-  const [formValues, setFormValues] = React.useState({
-    name: currentUser.name,
-    email: currentUser.email,
-  });
+  const [isVisibleButton, setVisibleButton] = useState(false);
+  const [isSaveData, setIsSaveData] = useState(false);
+  const [formValues, setFormValues] = React.useState({});
   
-
+  
   function changeBlock() {
     setChangeBlock(true);
+    setIsSaveData(false);
   }
   const {
     register,
@@ -29,12 +30,37 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
     const { name, value } = e.target;
 
     setFormValues((prevState) => ({ ...prevState, [name]: value }));
+    if (value !== currentUserInfo.name || value !== currentUserInfo.email) {
+      setVisibleButton(true);
+    } else {
+      setVisibleButton(false);
+    }
   };
 
   const handleProfileSubmit = (e) => {
     const { name, email } = formValues;
     onUpdateUser(name, email);
+    setIsSaveData(true);
   };
+  
+  React.useEffect(() => {
+    if (isAuth === "auth") {
+      Auth.getUserInfo()
+      .then((user) => {
+        setFormValues({
+          name: user.name, 
+          email: user.email
+        });
+        
+     })
+      .catch((error) => {
+      console.log(error);
+      });
+  
+  }
+}, [isAuth]);
+
+
   return (
     <>
       <main className="main">
@@ -44,7 +70,7 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
             onSubmit={handleSubmit(handleProfileSubmit)}
           >
             <h3 className="profile__welcome">
-              Привет, {currentUser?.name ?? "Виталий"}!
+              Привет, {currentUserInfo?.name ?? "Виталий"}!
             </h3>
             <section className="profile__inputs">
               <p className="profile__text">Имя</p>
@@ -59,6 +85,8 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
                   className="profile__input"
                   placeholder="Имя"
                   type="text"
+                  required
+                  autoFocus
                   value={formValues.name}
                   disabled={isLoading}
                 />
@@ -76,7 +104,6 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
               <section className="profile__area profile__area-type-email">
                 <input
                   {...register("email", {
-                    required: true,
                     minLength: 6,
                     maxLength: 35,
                     onChange: (e) => handleInputChange(e),
@@ -85,6 +112,7 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
                   className="profile__input"
                   placeholder="E-mail"
                   type="email"
+                  
                   value={formValues.email}
                   disabled={isLoading}
                 />
@@ -131,10 +159,11 @@ const Profile = ({ onSignOut, onUpdateUser, isLoading, error, isSaveData}) => {
                   <></>
                 )}
                 <button
-                  className={`auth-section__button profile__button-save ${isLoading && "auth-section__button_disabled"
+                  className={`auth-section__button profile__button-save ${(isLoading || !isVisibleButton) && "auth-section__button_disabled"
                     }`}
                   isLoading={isLoading}
-                  
+                  disabled={!isVisibleButton}
+                  type="submit"
                 >
                   Сохранить
                 </button>

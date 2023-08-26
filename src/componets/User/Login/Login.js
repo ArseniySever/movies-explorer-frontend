@@ -41,7 +41,7 @@ function Login({onSignin, isLoading}) {
                 minLength: 6,
                 maxLength: 35,
                 onChange: (e) => handleInputChange(e),
-                pattern: /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/,
+                pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
               })}
               className="auth-section__input"
               name="email"

@@ -7,6 +7,8 @@ const maxWindowMaxMovies = 12;
 const bigStep = 3;
 const littelStep = 2;
 const filtredMax = 40;
+const screenMin = 767;
+const screenMax = 1279;
 
 
 module.exports = {
@@ -18,5 +20,7 @@ module.exports = {
     maxWindowMaxMovies,
     bigStep,
     littelStep,
-    filtredMax
+    filtredMax,
+    screenMin,
+    screenMax
 };

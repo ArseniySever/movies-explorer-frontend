@@ -6,9 +6,10 @@ import "../../Movies/Preloader/Preloader.css";
 const constants = require('../../../utils/constantsMovies');
 
 const MoviesCardList = ({ cards, errorMesssage }) => {
-  const { pathname } = useLocation();
   const [maxMovies, setMaxMovies] = React.useState(0);
   const [step, setMotion] = React.useState(0);
+  const { pathname } = useLocation();
+
 
   const showMoreMovies = () => {
     setMaxMovies(maxMovies + step);
@@ -17,31 +18,33 @@ const MoviesCardList = ({ cards, errorMesssage }) => {
   const setMoviesRules = () => {
     const width = window.innerWidth;
     if (pathname === "/saved-movies") {
-      if (width <= 767) {
+      if (width <= constants.screenMin) {
         setMaxMovies(constants.mobileMaxMovies);
-      } else if (width <= 1279) {
+      } else if (width <= constants.screenMax) {
         setMaxMovies(constants.minWindowMaxMovies);
       } else {
         setMaxMovies(constants.maxWindowMaxMovies);
       }
-    }
-    if (width <= 767) {
+    } 
+    if (width <= constants.screenMin) {
       setMaxMovies(constants.mobileMaxMovies);
       setMotion(constants.littelStep);
-    } else if (width <= 1279) {
+    } else if (width <= constants.screenMax) {
       setMaxMovies(constants.minWindowMaxMovies);
       setMotion(constants.littelStep);
     } else {
       setMaxMovies(constants.maxWindowMaxMovies);
       setMotion(constants.bigStep);
     }
+
   };
   React.useEffect(() => {
     setMoviesRules();
-    window.addEventListener("resize", () => {
-      setTimeout(() => {
+    window.addEventListener("change" , () => {
+      setMoviesRules();
+  });
+    window.addEventListener("resize" , () => {
         setMoviesRules();
-      }, constants.timeOut);
     });
   }, []);
   return (
@@ -50,9 +53,8 @@ const MoviesCardList = ({ cards, errorMesssage }) => {
         {cards.map((movie, index) => {
           if (index < maxMovies) {
             return <Movies key={movie.id || movie.movieId} cardData={movie} />;
-          } else {
-            return null;
           }
+            return null;
         })}
         <p
           className={

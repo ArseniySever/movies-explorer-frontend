@@ -15,30 +15,17 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./App.css";
 
 function App() {
+  
   const { pathname } = useLocation();
-  const [loggedIn, setLoggedIn] = React.useState(false);
   const [cards, setCards] = React.useState([]);
-  const [currentUser, setCurrentUser] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setCatchError] = useState(false);
-  const [isSaveData, setIsSaveData] = useState(false);
   const [isAuth, setIsAuth] = useState('auth', 'unknow', 'no_auth');
+  const [currentUser, setCurrentUser] = React.useState({});
+
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (isAuth === "auth") {
-      Auth.getUserInfo()
-      .then((user) => {
-        setIsAuth('auth');
-        setCurrentUser(user);
-     })
-      .catch((error) => {
-      console.log(error);
-      setIsAuth('no_auth');
-      });
   
-  }
-}, []);
   React.useEffect(() => {
     Auth.getContent()
       .then((data) => {
@@ -53,12 +40,26 @@ function App() {
       .catch(console.error);
   }, []);
 
+  React.useEffect(() => {
+    if (isAuth === "auth") {
+      Auth.getUserInfo()
+      .then((user) => {
+        setCurrentUser(user);
+        
+     })
+      .catch((error) => {
+      console.log(error);
+      setIsAuth('no_auth');
+      });
+  
+  }
+}, []);
+
   function handleUpdateUser(name, email) {
     Auth.editUserInfo(name, email)
       .then((newinfo) => {
         setCurrentUser(newinfo.user);
         setCatchError(false);
-        setIsSaveData(true);
       })
       .catch((err) => {
         setCatchError(true);
@@ -70,7 +71,6 @@ function App() {
       .then((data) => {
         if (data) {
           setIsAuth('auth');
-          setCurrentUser(data);
           navigate("/movies", { replace: true });
           
         }
@@ -81,12 +81,12 @@ function App() {
 
       });
   }
-  function handleRegister(email, password, name) {
+  function handleRegister(name, email, password) {
     if (email && password && name) {
-      Auth.registration(email, password, name)
+      Auth.registration(name, email, password)
         .then((res) => {
           navigate("/movies", { replace: true });
-          setIsAuth('auth');
+          handleSignin(email, password);
         })
         .catch((err) => {
           console.log(err);
@@ -101,6 +101,7 @@ function App() {
       localStorage.clear();
       setIsAuth('no_auth');
       navigate("/", { replace: true });
+      
     })
     .catch((err) => {
       console.log(err);
@@ -141,8 +142,7 @@ function App() {
                 onSignOut={handleLogout}
                 onUpdateUser={handleUpdateUser}
                 error={error}
-                isSaveData={isSaveData}
-               
+                currentUser={currentUser}
               />
             }
           />
