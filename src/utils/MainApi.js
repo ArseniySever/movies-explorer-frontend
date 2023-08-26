@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:4100';
+export const BASE_URL = 'https://movie.search.nomoredomains.xyz';
 
 const handleResponse = (response) => {
   if (!response.ok) {
