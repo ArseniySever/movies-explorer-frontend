@@ -1,0 +1,344 @@
+.aboutme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .aboutme{
+      max-width: 668px;
+
+    }
+  }
+  @media screen and  (max-width: 767px) {
+    .aboutme{
+      max-width: 291px;
+
+    }
+  }
+  
+  .aboutme__title {
+    max-width: 100%;
+    margin: 0;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    color: #FFFFFF;
+    border-bottom: 1px solid #DADADA;
+    padding-bottom: 23px;
+    padding-top: 110px;
+  }
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .aboutme__title{
+      padding-top: 90px;
+    }
+    }
+  @media screen and  (max-width: 767px) {
+    .aboutme__title{
+      font-size: 18px;
+      line-height: 22px;
+      padding-top: 70px;
+      padding-bottom: 28px;
+
+    }
+    }
+  .aboutme__block{
+    display: flex;
+    justify-content: space-between;    
+    padding-top: 66px;
+  }
+  @media screen and (min-width: 768px) and  (max-width: 1279px) {
+    .aboutme__block{
+      padding-top: 66px;
+
+    }
+}
+  @media screen and  (max-width: 767px) {
+    .aboutme__block{
+      padding-top: 60px;
+      flex-direction: column-reverse;
+    }
+    }
+    .aboutme__subtitle{
+      font-style: normal;
+      font-size: 50px;
+      line-height: 58px;
+      letter-spacing: -0.04em;
+      font-family: "Inter", Arial, sans-serif;
+      font-weight: 400;
+      color: #FFFFFF;
+      margin: 0;
+      padding-bottom: 18px;
+    }
+    @media screen and (min-width: 768px) and  (max-width: 1279px) {
+      .aboutme__subtitle{
+        font-size: 40px;
+        line-height: 40px;
+        padding-bottom: 16px;
+      }
+  }
+  @media screen and  (max-width: 767px) {
+      .aboutme__subtitle{
+        font-size: 30px;
+        line-height: 36px;
+        padding-bottom: 20px;
+      }
+  }
+    
+      .aboutme__image{
+        max-width: 270px;
+        max-height: 327px;
+        border-radius: 10px;
+        align-self: center;
+      }
+      @media screen and (min-width: 768px) and  (max-width: 1279px) {
+        .aboutme__image{
+          max-width: 255px;
+          max-height: 307px;
+          width: 100%;
+  
+        
+      }}
+      @media screen and  (max-width: 767px) {
+        .aboutme__image{
+          padding-bottom: 40px;
+          align-self: center;
+          max-width: 292px;
+          min-height: 352px;
+          width: 100%;
+          height: 100%;
+        }
+    }
+      
+      .aboutme__about{
+        margin: 0;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20px;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 500;
+        color: #FFFFFF;
+        padding-bottom: 26px;
+      }
+      @media screen and (min-width: 768px) and  (max-width: 1279px) {
+        .aboutme__about{
+          font-size: 12px;
+          line-height: 18px;
+          padding-bottom: 20px;
+
+        }
+    }
+    @media screen and  (max-width: 767px) {
+        .aboutme__about{
+          font-size: 11px;
+          line-height: 16px;
+          padding-bottom: 20px;
+
+        }
+    }
+      .aboutme__text{
+        margin: 0;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 22px;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 400;
+        color: #FFFFFF;
+        max-width: 600px;
+      }
+      @media screen and (min-width: 768px) and  (max-width: 1279px) {
+        .aboutme__text{
+          max-width: 364px;
+          font-size: 12px;
+          line-height: 18px;
+
+        }
+    }
+    @media screen and  (max-width: 767px) {
+        .aboutme__text{
+          max-width: 600px;
+          font-size: 11px;
+          line-height: 16px;
+        }
+    }
+      .aboutme__git{
+        margin: 0;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 17px;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 500;
+        color: #FFFFFF;
+        margin-top: 99px;
+        text-decoration: none;
+        transition: opacity .2s linear;
+      }
+      .aboutme__git:hover{
+        cursor: pointer;
+        opacity: .6;
+  
+  
+      }
+      .aboutme__git-title{
+        font-style: normal;
+        font-size: 14px;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 500;
+        color: #FFFFFF;
+        margin-top: 99px;
+        text-decoration: none;
+        margin-bottom: 0;
+      }
+      @media screen and (min-width: 768px) and  (max-width: 1279px) {
+        .aboutme__git-title{
+          margin-top: 87px;
+        }
+    }
+    @media screen and  (max-width: 767px) {
+      .aboutme__git-title{
+        margin-top: 40px;
+      }
+  }
+      .aboutme__portfolio-name{
+        margin: 0;
+        font-style: normal;
+        line-height: 20px;
+        font-size: 18px;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 400;
+        color: #8B8B8B;
+        padding-top: 101px;
+        padding-bottom: 50px;
+      }
+      @media screen and (min-width: 768px) and  (max-width: 1279px) {
+        .aboutme__portfolio-name{
+          padding-top: 90px;
+        }
+    }
+    @media screen and  (max-width: 767px) {
+      .aboutme__portfolio-name{
+        padding-top: 70px;
+        padding-bottom: 40px;
+        line-height: 20px;
+        font-size: 14px;
+
+      }
+  }
+      .aboutme__portfolio {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding-bottom: 105px;
+    }
+    @media screen and (min-width: 768px) and  (max-width: 1279px) {
+      .aboutme__portfolio{
+        padding-bottom: 90px;
+
+      }
+  }
+  @media screen and  (max-width: 767px) {
+      .aboutme__portfolio{
+        padding-bottom: 70px;        
+      }
+  }
+    .aboutme__portfolio-tab {
+        display: grid;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+    
+    .aboutme__portfolio-link {
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #424242;
+        color: #FFFFFF;
+        font-weight: 400;
+        max-height: 50px;
+        font-family: "Inter", Arial, sans-serif;
+        letter-spacing: -0.04em;
+        transition: opacity .2s linear;
+        padding-bottom: 19px;
+
+
+    }
+
+    .aboutme__portfolio-link:hover{
+      cursor: pointer;
+      opacity: .6;
+
+
+    }
+
+    @media screen and (min-width: 768px) and  (max-width: 1279px) {
+      .aboutme__portfolio-link{
+        font-size: 28px;
+        line-height: 50px;
+
+      }
+  }
+  @media screen and  (max-width: 767px) {
+      .aboutme__portfolio-link{
+        max-width: 600px;
+        
+      }
+  }
+    
+    .aboutme__portfolio-tab {
+        color: black;
+        text-align: center;
+        
+    }
+    
+    .portfolio__list-item-wrap:nth-child(3) :any-link {
+        border-bottom: none;
+    }
+    
+  
+        .aboutme__portfolio-title {
+            font-size: 30px;
+            line-height: 50px;
+            margin: 0;
+            letter-spacing: -0.04em;
+            max-height: 60px;
+        }
+        
+    @media screen and (min-width: 768px) and  (max-width: 1279px) {
+      .aboutme__portfolio-title{
+        min-height: 60px;
+
+      }
+  }
+        @media screen and  (max-width: 767px) {
+          .aboutme__portfolio-title{
+            line-height: 28px;
+            font-size: 18px;
+            max-height: 28px;
+
+          }
+      }
+    
+        .aboutme__portfolio-arrow {
+          max-height: 60px;
+        }
+        @media screen and  (max-width: 767px) {
+          .aboutme__portfolio-arrow{
+            max-height: 28px;
+
+          }
+      }
+    
+        .aboutme__portfolio-block {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        .aboutme__portfolio-link-last{
+          border-bottom: none;
+        }
+     
